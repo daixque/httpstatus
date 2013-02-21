@@ -62,9 +62,19 @@ class HttpStatus
     }
   end
 
+  def lookup(code)
+    results = []
+    @statuses.each do |c, m|
+      if c.start_with? code
+        results << "#{c}: #{m}"
+      end
+    end
+    results
+  end
+
   def run(args)
     code = args.shift
-    result = @statuses[code]
-    puts result
+    results = lookup code
+    puts results
   end
 end
