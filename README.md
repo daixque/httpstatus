@@ -1,6 +1,22 @@
 = httpstatus
 
-Description goes here.
+httpstatus shows meaning of given HTTP status code.
+
+  $ httpstatus 40
+  400: Bad Request
+  401: Unauthorized
+  402: Payment Required
+  403: Forbidden
+  404: Not Found
+  405: Method Not Allowed
+  406: Not Acceptable
+  407: Proxy Authentication Required
+  408: Request Timeout
+  409: Conflict
+
+== Install
+
+  $ gem install httpstatus
 
 == Contributing to httpstatus
  
