@@ -65,7 +65,7 @@ class HttpStatus
   def lookup(code)
     results = []
     @statuses.each do |c, m|
-      if c.start_with? code
+      if c.start_with?(code) || m.downcase.match(code.downcase)
         results << "#{c}: #{m}"
       end
     end
