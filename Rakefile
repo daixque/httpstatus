@@ -17,10 +17,12 @@ Jeweler::Tasks.new do |gem|
   gem.name = "httpstatus"
   gem.homepage = "http://github.com/daixque/httpstatus"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{dictionary of HTTP status code}
+  gem.description = %Q{httpstatus shows meaning of given HTTP status code}
   gem.email = "daixque@gmail.com"
   gem.authors = ["daixque"]
+  gem.executables << "httpstatus"
+  gem.bindir = "bin"
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
