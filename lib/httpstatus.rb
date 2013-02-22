@@ -1,3 +1,8 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require 'optparse'
+
 class HttpStatus
   def initialize
     @statuses = {
@@ -62,6 +67,34 @@ class HttpStatus
     }
   end
 
+  def usage
+  usage_text = <<-"USAGE"
+httpstatus shows meaning of HTTP status code.
+Usage:
+  httpstatus [statuscode_or_keyword] 
+
+Options:
+  -v, [--version] show version
+  -h, [--help]    show usage
+USAGE
+  end
+
+  def parse_opts(argv)
+    OptionParser.new { |opt|
+      opt.on("-v", "--version") {
+        version = File.read File.join(File.dirname(__FILE__), "../VERSION")
+        puts "httpstatus #{version}"
+        exit(0)
+      }
+      opt.on("-h", "--help") {
+        puts usage
+        exit(0)
+      }
+      
+      opt.parse! argv
+    }
+  end
+
   def lookup(code)
     results = []
     @statuses.each do |c, m|
@@ -73,6 +106,7 @@ class HttpStatus
   end
 
   def run(args)
+    parse_opts(args)
     code = args.shift
     results = lookup code
     puts results
